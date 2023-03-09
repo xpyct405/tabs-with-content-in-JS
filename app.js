@@ -1,28 +1,28 @@
-// Get all .tablink items
-let tabLinks = document.querySelectorAll('.tablink');
-// Get all .tabcontent item
-let tabContents = document.querySelectorAll('.tabcontent');
+// Получим все .tablink кнопки
+let tabLink = document.querySelectorAll('.tablink');
 
-// Запускаем цикл для каждой вкладки
-for (let i = 0; i < tabLinks.length; i++){
-    tabLinks[i].addEventListener('click', function (){
+// Получим все .tabcontent элементы
+let tabContent = document.querySelectorAll('.tabcontent');
 
-    // Removes all classes 'active' in .tablink items
-    for (let i = 0; i < tabLinks.length; i++){
-        tabLinks[i].classList.remove('active')
+// Запускаем цикл для каждой кнопки tabLink
+for (let i = 0; i < tabLink.length; i++){
+    tabLink[i].addEventListener('click', function (){
+        // При клике по любой из кнопок, у всех кнопок будет удаляться класс 'active'
+        for (let i = 0; i < tabLink.length; i++){
+            tabLink[i].classList.remove('active')
     }
-    // Add .active class
-    tabLinks[i].classList.add('active')
+    
+    // Добавить кнопке по которой кликаем класс .active
+    this.classList.add('active')
 
-    // Hide  all .tabcontent items
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].style.display = "none";
+    // При клике по любой из кнопок проходимся по всем tabContent и меняем стиль 
+    for (let i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
     }
-    // Show .tabcontent[i] item
-    tabContents[i].style.display = "block"; 
+    // tabContent с индексом i (как и кнопке) меняем стиль на block
+    tabContent[i].style.display = "block"; 
     });
 }
-
 
 // Чтобы изначально была открыта первая вкладка
 document.querySelector('#default-link').click()
